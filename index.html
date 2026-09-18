@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Pedro Corre 5K · 10K</title>
+    <meta name="description" content="Inscríbete en la Carrera San Pedro Corre 5K ·10K el 17 de Diciembre 2026">
+    <link rel="icon" href="logospcorre.jpg" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ============================================================
+         SECCIÓN 1: HEADER / NAVEGACIÓN
+         ============================================================ -->
+    <header class="header" id="header">
+        <div class="header__container">
+            <a href="#" class="header__logo">
+                <!-- Logo del evento -->
+                <img src="logospcorre.jpg" alt="Logo San Pedro Corre" class="header__logo-img">
+            </a>
+
+            <!-- Botón hamburguesa (móvil) -->
+            <button class="header__hamburger" id="menuToggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="header__nav" id="mainNav">
+                <a href="#hero" class="header__nav-link">Inicio</a>
+                <a href="#inscripcion" class="header__nav-link">Inscripción</a>
+                <a href="#info-kit" class="header__nav-link">Info del evento</a>
+                <a href="#contacto" class="header__nav-link">Contacto</a>
+                <a href="#inscripcion" class="header__nav-cta">Inscríbete</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- ============================================================
+         SECCIÓN 2: HERO / BANNER PRINCIPAL
+         ============================================================ -->
+    <section class="hero" id="hero">
+        <!-- Imagen de fondo: reemplazar con la foto real del evento -->
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <p class="hero__subtitle">¡Supera tus límites!</p>
+            <h1 class="hero__title">CARRERA<br><span class="hero__highlight">10K / 5K</span></h1>
+            <div class="hero__meta">
+                <span class="hero__meta-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" />
+                        <path d="M16 2v4M8 2v4M3 10h18" />
+                    </svg>
+                    19 de Diciembre, 2026
+                </span>
+                <span class="hero__meta-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    San Pedro Sucre, Colombia
+                </span>
+            </div>
+            <a href="#inscripcion" class="hero__cta">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
+                </svg>
+                Inscríbete ahora
+            </a>
+        </div>
+        <!-- Degradado inferior para transición suave -->
+        <div class="hero__fade"></div>
+    </section>
+
+
+    <!-- ============================================================
+         SECCIÓN 3: ELIGE TU PRUEBA (tarjetas de distancias)
+         ============================================================ -->
+    <section class="pruebas" id="inscripcion">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Elige tu prueba</h2>
+                <p class="section-subtitle">Selecciona la distancia que deseas correr y asegura tu cupo.</p>
+            </div>
+
+            <div class="pruebas__grid">
+                <!-- Tarjeta 5K -->
+                <div class="prueba-card">
+                    <div class="prueba-card__badge">Popular</div>
+                    <div class="prueba-card__distance">5K</div>
+                    <h3 class="prueba-card__name">Carrera Recreativa</h3>
+                    <div class="prueba-card__price">
+                        <span class="prueba-card__currency">$</span>
+                        <span class="prueba-card__amount">60.000</span>
+                        <span class="prueba-card__unit">COP</span>
+                    </div>
+                    <ul class="prueba-card__features">
+                        <li>✓ Kit de corredor (camiseta + número)</li>
+                        <li>✓ Hidratación en ruta</li>
+                        <li>✓ Medalla de participación</li>
+                        <li>✓ Seguro médico</li>
+                    </ul>
+                    <p class="prueba-card__deadline">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+                        Inscripciones hasta: <strong>1 Dic 2026</strong>
+                    </p>
+                    <button class="prueba-card__btn" onclick="iniciarInscripcion('5K')">Inscribirme</button>
+                </div>
+
+                <!-- Tarjeta 10K -->
+                <div class="prueba-card prueba-card--featured">
+                    <div class="prueba-card__badge prueba-card__badge--featured">Recomendada</div>
+                    <div class="prueba-card__distance">10K</div>
+                    <h3 class="prueba-card__name">Carrera Competitiva</h3>
+                    <div class="prueba-card__price">
+                        <span class="prueba-card__currency">$</span>
+                        <span class="prueba-card__amount">60.000</span>
+                        <span class="prueba-card__unit">COP</span>
+                    </div>
+                    <ul class="prueba-card__features">
+                        <li>✓ Kit premium (camiseta técnica + número)</li>
+                        <li>✓ Hidratación y frutas en ruta</li>
+                        <li>✓ Medalla finisher</li>
+                        <li>✓ Seguro médico</li>
+                        <li>✓ Chip de cronometraje</li>
+                    </ul>
+                    <p class="prueba-card__deadline">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+                        Inscripciones hasta: <strong>1 Dic 2026</strong>
+                    </p>
+                    <button class="prueba-card__btn prueba-card__btn--featured"
+                        onclick="iniciarInscripcion('10K')">Inscribirme</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECCIÓN 4: FORMULARIO DE INSCRIPCIÓN MULTI-PASO (WIZARD)
+         ============================================================ -->
+    <section class="formulario" id="formulario">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Formulario de Inscripción</h2>
+                <p class="section-subtitle">Completa tus datos en 4 sencillos pasos.</p>
+            </div>
+
+            <!-- Indicador de progreso -->
+            <div class="wizard__progress">
+                <div class="wizard__step wizard__step--active" data-step="1">
+                    <div class="wizard__step-circle" id="stepCircle1">1</div>
+                    <span class="wizard__step-label">Datos personales</span>
+                </div>
+                <div class="wizard__step-line" id="stepLine1"></div>
+                <div class="wizard__step" data-step="2">
+                    <div class="wizard__step-circle" id="stepCircle2">2</div>
+                    <span class="wizard__step-label">Evento</span>
+                </div>
+                <div class="wizard__step-line" id="stepLine2"></div>
+                <div class="wizard__step" data-step="3">
+                    <div class="wizard__step-circle" id="stepCircle3">3</div>
+                    <span class="wizard__step-label">Resumen</span>
+                </div>
+                <div class="wizard__step-line" id="stepLine3"></div>
+                <div class="wizard__step" data-step="4">
+                    <div class="wizard__step-circle" id="stepCircle4">4</div>
+                    <span class="wizard__step-label">Pago</span>
+                </div>
+            </div>
+
+            <!-- Contenedor del formulario -->
+            <div class="wizard__container">
+
+                <!-- ========== PASO 1: DATOS PERSONALES ========== -->
+                <div class="wizard__panel wizard__panel--active" id="paso1">
+                    <div class="wizard__card">
+                        <h3 class="wizard__card-title">Datos Personales</h3>
+                        <p class="wizard__card-subtitle">Ingresa tu información personal para el registro.</p>
+
+                        <div class="form-grid">
+                            <!-- Nombre -->
+                            <div class="form-group">
+                                <label class="form-label" for="nombre">Nombre <span class="required">*</span></label>
+                                <input type="text" id="nombre" class="form-input" placeholder="Tu nombre" required>
+                            </div>
+                            <!-- Apellido -->
+                            <div class="form-group">
+                                <label class="form-label" for="apellido">Apellido <span
+                                        class="required">*</span></label>
+                                <input type="text" id="apellido" class="form-input" placeholder="Tu apellido" required>
+                            </div>
+                            <!-- Tipo de documento -->
+                            <div class="form-group">
+                                <label class="form-label" for="tipoDoc">Tipo de documento <span
+                                        class="required">*</span></label>
+                                <select id="tipoDoc" class="form-input form-select" required>
+                                    <option value="">Selecciona...</option>
+                                    <option value="CC">Cédula de Ciudadanía (CC)</option>
+                                    <option value="CE">Cédula de Extranjería (CE)</option>
+                                    <option value="TI">Tarjeta de Identidad (TI)</option>
+                                    <option value="PA">Pasaporte (PA)</option>
+                                </select>
+                            </div>
+                            <!-- Número de documento -->
+                            <div class="form-group">
+                                <label class="form-label" for="numDoc">Número de documento <span
+                                        class="required">*</span></label>
+                                <input type="text" id="numDoc" class="form-input" placeholder="Ej: 1234567890"
+                                    inputmode="numeric" required>
+                            </div>
+                            <!-- Fecha de nacimiento -->
+                            <div class="form-group">
+                                <label class="form-label" for="fechaNacimiento">Fecha de nacimiento <span
+                                        class="required">*</span></label>
+                                <input type="date" id="fechaNacimiento" class="form-input" required>
+                            </div>
+                            <!-- Género -->
+                            <div class="form-group">
+                                <label class="form-label" for="genero">Género <span class="required">*</span></label>
+                                <select id="genero" class="form-input form-select" required>
+                                    <option value="">Selecciona...</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Femenino</option>
+                                    <option value="O">Otro</option>
+                                </select>
+                            </div>
+                            <!-- Celular -->
+                            <div class="form-group">
+                                <label class="form-label" for="celular">Celular <span class="required">*</span></label>
+                                <input type="tel" id="celular" class="form-input" placeholder="300 123 4567" required>
+                            </div>
+                            <!-- Correo electrónico -->
+                            <div class="form-group">
+                                <label class="form-label" for="correo">Correo electrónico <span
+                                        class="required">*</span></label>
+                                <input type="email" id="correo" class="form-input" placeholder="tu@correo.com" required>
+                            </div>
+                            <!-- Confirmar correo -->
+                            <div class="form-group">
+                                <label class="form-label" for="correoConfirm">Confirmar correo <span
+                                        class="required">*</span></label>
+                                <input type="email" id="correoConfirm" class="form-input" placeholder="Repite tu correo"
+                                    required>
+                            </div>
+                            <!-- Ciudad -->
+                            <div class="form-group">
+                                <label class="form-label" for="ciudad">Ciudad <span class="required">*</span></label>
+                                <input type="text" id="ciudad" class="form-input" placeholder="Tu ciudad" required>
+                            </div>
+                            <!-- Departamento -->
+                            <div class="form-group">
+                                <label class="form-label" for="departamento">Departamento <span
+                                        class="required">*</span></label>
+                                <input type="text" id="departamento" class="form-input" placeholder="Tu departamento"
+                                    required>
+                            </div>
+                        </div>
+
+                        <!-- Mensaje de error general -->
+                        <p class="form-error" id="errorPaso1" style="display:none;"></p>
+
+                        <div class="wizard__actions">
+                            <div></div> <!-- Espacio vacío para alinear a la derecha -->
+                            <button type="button" class="btn btn--primary" onclick="siguientePaso(1)">
+                                Siguiente
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========== PASO 2: DATOS DEL EVENTO / CATEGORÍA ========== -->
+                <div class="wizard__panel" id="paso2">
+                    <div class="wizard__card">
+                        <h3 class="wizard__card-title">Datos del Evento</h3>
+                        <p class="wizard__card-subtitle">Selecciona tu categoría y preferencias para la carrera.</p>
+
+                        <div class="form-grid">
+                            <!-- Categoría / Distancia -->
+                            <div class="form-group">
+                                <label class="form-label" for="categoria">Categoría / Distancia <span
+                                        class="required">*</span></label>
+                                <select id="categoria" class="form-input form-select" required>
+                                    <option value="">Selecciona...</option>
+                                    <option value="5K">5K — Carrera Recreativa ($60.000)</option>
+                                    <option value="10K">10K — Carrera Competitiva ($60.000)</option>
+                                </select>
+                            </div>
+                            <!-- Talla de camiseta -->
+                            <div class="form-group">
+                                <label class="form-label" for="tallaCamiseta">Talla de camiseta (Kit) <span
+                                        class="required">*</span></label>
+                                <select id="tallaCamiseta" class="form-input form-select" required>
+                                    <option value="">Selecciona...</option>
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                    <option value="XXL">XXL</option>
+                                </select>
+                            </div>
+                            <!-- Grupo sanguíneo -->
+                            <div class="form-group">
+                                <label class="form-label" for="grupoSanguineo">Grupo sanguíneo</label>
+                                <select id="grupoSanguineo" class="form-input form-select">
+                                    <option value="">Selecciona...</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <p class="form-error" id="errorPaso2" style="display:none;"></p>
+
+                        <div class="wizard__actions">
+                            <button type="button" class="btn btn--secondary" onclick="anteriorPaso(2)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                                </svg>
+                                Anterior
+                            </button>
+                            <button type="button" class="btn btn--primary" onclick="siguientePaso(2)">
+                                Siguiente
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========== PASO 3: RESUMEN ========== -->
+                <div class="wizard__panel" id="paso3">
+                    <div class="wizard__card">
+                        <h3 class="wizard__card-title">Resumen de tu inscripción</h3>
+                        <p class="wizard__card-subtitle">Revisa que todos tus datos sean correctos antes de continuar al
+                            pago.</p>
+
+                        <div class="resumen">
+                            <div class="resumen__section">
+                                <h4 class="resumen__section-title">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                                        <circle cx="12" cy="7" r="4" />
+                                    </svg>
+                                    Datos Personales
+                                </h4>
+                                <div class="resumen__grid" id="resumenPersonal">
+                                    <!-- Se llena dinámicamente con JS -->
+                                </div>
+                            </div>
+                            <div class="resumen__section">
+                                <h4 class="resumen__section-title">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+                                        <line x1="4" y1="22" x2="4" y2="15" />
+                                    </svg>
+                                    Datos del Evento
+                                </h4>
+                                <div class="resumen__grid" id="resumenEvento">
+                                    <!-- Se llena dinámicamente con JS -->
+                                </div>
+                            </div>
+                            <div class="resumen__total">
+                                <span>Total a pagar:</span>
+                                <span class="resumen__total-amount" id="resumenTotal">$0</span>
+                            </div>
+                        </div>
+
+                        <div class="wizard__actions">
+                            <button type="button" class="btn btn--secondary" onclick="anteriorPaso(3)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                                </svg>
+                                Anterior
+                            </button>
+                            <button type="button" class="btn btn--primary" onclick="siguientePaso(3)">
+                                Ir al pago
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========== PASO 4: PAGO (PLACEHOLDER) ========== -->
+                <div class="wizard__panel" id="paso4">
+                    <div class="wizard__card">
+                        <h3 class="wizard__card-title">Pago</h3>
+                        <p class="wizard__card-subtitle">Completa tu inscripción realizando el pago.</p>
+                        <div class="pago-placeholder" id="pagoContainer">
+                            <div class="pago-placeholder__icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <rect x="1" y="4" width="22" height="16" rx="2" />
+                                    <line x1="1" y1="10" x2="23" y2="10" />
+                                </svg>
+                            </div>
+                            <p class="pago-placeholder__text">La pasarela de pago se integrará próximamente.</p>
+                            <p class="pago-placeholder__subtext">Proveedores en evaluación: Wompi · PayU · Mercado Pago
+                            </p>
+
+                            <div class="pago-placeholder__resumen">
+                                <div class="pago-placeholder__line">
+                                    <span>Categoría:</span>
+                                    <span id="pagoCategoria">—</span>
+                                </div>
+                                <div class="pago-placeholder__line pago-placeholder__line--total">
+                                    <span>Total:</span>
+                                    <span id="pagoTotal">$0</span>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn--primary btn--lg" id="btnPagar"
+                                onclick="confirmarPago()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                                Confirmar y pagar
+                            </button>
+                        </div>
+
+                        <div class="wizard__actions">
+                            <button type="button" class="btn btn--secondary" onclick="anteriorPaso(4)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                                </svg>
+                                Anterior
+                            </button>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /wizard__container -->
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECCIÓN 5: ENTREGA DE KIT
+         ============================================================ -->
+    <section class="info-kit" id="info-kit">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Entrega de Kit</h2>
+                <p class="section-subtitle">Recoge tu kit de corredor antes del día de la carrera.</p>
+            </div>
+
+            <div class="info-kit__cards">
+                <div class="info-kit__card">
+                    <div class="info-kit__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" />
+                            <path d="M16 2v4M8 2v4M3 10h18" />
+                        </svg>
+                    </div>
+                    <h4 class="info-kit__card-title">Fecha</h4>
+                    <p class="info-kit__card-text">13 y 14 de Diciembre, 2026</p>
+                </div>
+                <div class="info-kit__card">
+                    <div class="info-kit__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+                    </div>
+                    <h4 class="info-kit__card-title">Horario</h4>
+                    <p class="info-kit__card-text">9:00 AM — 5:00 PM</p>
+                </div>
+                <div class="info-kit__card">
+                    <div class="info-kit__icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                    </div>
+                    <h4 class="info-kit__card-title">Lugar</h4>
+                    <p class="info-kit__card-text">Biblioteca Municipal<br>Barrio San Martin</p>
+                </div>
+            </div>
+
+            <div class="info-kit__note">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p>Recuerda llevar tu <strong>documento de identidad</strong> para reclamar el kit. Un tercero puede
+                    reclamarlo con autorización escrita y copia del documento.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECCIÓN 6: DOCUMENTOS (Reglamento, Exoneración)
+         ============================================================ -->
+    <!-- <section class="documentos" id="documentos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Documentos</h2>
+                <p class="section-subtitle">Lee y descarga los documentos oficiales del evento.</p>
+            </div>
+
+            <div class="documentos__grid">
+                <a href="#" class="documento-card" target="_blank" rel="noopener">
+                    <div class="documento-card__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                            <line x1="10" y1="9" x2="8" y2="9" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="documento-card__title">Reglamento de la Carrera</h4>
+                        <p class="documento-card__desc">Normas, categorías, premiación y reglas generales.</p>
+                    </div>
+                    <svg class="documento-card__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M7 17l9.2-9.2M17 17V7H7" />
+                    </svg>
+                </a>
+
+                <a href="#" class="documento-card" target="_blank" rel="noopener">
+                    <div class="documento-card__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="documento-card__title">Exoneración de Responsabilidad</h4>
+                        <p class="documento-card__desc">Declaración de responsabilidad y aceptación de riesgos.</p>
+                    </div>
+                    <svg class="documento-card__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M7 17l9.2-9.2M17 17V7H7" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section> -->
+
+
+    <!-- ============================================================
+         SECCIÓN 7: CONTACTO
+         ============================================================ -->
+    <section class="contacto" id="contacto">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contacto</h2>
+                <p class="section-subtitle">¿Tienes preguntas? Comunícate con nosotros.</p>
+            </div>
+
+            <div class="contacto__grid">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/573001234567" class="contacto__card" target="_blank" rel="noopener">
+                    <div class="contacto__icon contacto__icon--whatsapp">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="contacto__card-title">WhatsApp</h4>
+                        <p class="contacto__card-text">+57 320 589 2205</p>
+                    </div>
+                </a>
+
+                <!-- Correo -->
+                <a href="mailto:corresanpedro@gmail.com" class="contacto__card">
+                    <div class="contacto__icon contacto__icon--email">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="contacto__card-title">Correo electrónico</h4>
+                        <p class="contacto__card-text">corresanpedro@gmail.com</p>
+                    </div>
+                </a>
+
+                <!-- Redes sociales -->
+                <div class="contacto__card">
+                    <div class="contacto__icon contacto__icon--social">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" />
+                            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="contacto__card-title">Redes sociales</h4>
+                        <div class="contacto__social-links">
+                            <a href="#" target="_blank" rel="noopener" title="Instagram">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" />
+                                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                                </svg>
+                            </a>
+                            <a href="#" target="_blank" rel="noopener" title="Facebook">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                                </svg>
+                            </a>
+                            <a href="#" target="_blank" rel="noopener" title="X (Twitter)">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M4 4l11.733 16h4.267l-11.733-16zM4 20l6.768-6.768M13.232 10.232L20 4" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         SECCIÓN 8: FOOTER
+         ============================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__brand">
+                    <!-- Logo del evento en footer -->
+                    <img src="logospcorre.jpg" alt="Logo San Pedro Corre" class="footer__logo-img">
+                    <p class="footer__org">Organizado por: <strong>Jesus Ramos Olivares</strong></p>
+                </div>
+                <div class="footer__links">
+                    <a href="#hero">Inicio</a>
+                    <a href="#inscripcion">Inscripción</a>
+                    <a href="#info-kit">Info del evento</a>
+                    <a href="#documentos">Documentos</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Carrera San Pedro Corre. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ============================================================
+         MODAL DE CONFIRMACIÓN (aparece al "pagar" exitosamente)
+         ============================================================ -->
+    <div class="modal" id="modalConfirmacion">
+        <div class="modal__backdrop" onclick="cerrarModal()"></div>
+        <div class="modal__content">
+            <div class="modal__icon modal__icon--success">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+            </div>
+            <h3 class="modal__title">¡Inscripción exitosa!</h3>
+            <p class="modal__text">Tu registro ha sido procesado correctamente. Recibirás un correo de confirmación con
+                los detalles de tu inscripción.</p>
+            <p class="modal__ref">Referencia: <strong id="modalRef">---</strong></p>
+            <button class="btn btn--primary" onclick="cerrarModal()">Entendido</button>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
