@@ -1,8 +1,3 @@
-/* ============================================================
-   CARRERA 21K/10K — LANDING PAGE
-   Archivo: styles.css
-   Paleta: Verde running (#277807), Amarillo energía (#FFFF00), Blanco (#FFFFFF)
-   ============================================================ */
 
 /* ── VARIABLES Y RESET ────────────────────────────────────── */
 :root {
@@ -182,12 +177,12 @@ h1, h2, h3, h4, h5, h6 {
 .header__logo-img {
     height: 48px;
     width: auto;
-    max-width: 65vw; /* Asegura que la imagen no dañe la vista en móvil (responsive) */
+    max-width: 65vw; 
     object-fit: contain;
     border: 2px solid rgba(var(--border-color-rgb), 0.8);
     border-radius: var(--radius-sm);
     padding: 2px;
-    background-color: var(--color-white); /* To make sure the image has good contrast if it's transparent, though it's a jpg */
+    background-color: var(--color-white); 
 }
 
 /* Hamburguesa */
@@ -275,14 +270,15 @@ h1, h2, h3, h4, h5, h6 {
 /* ── HERO / BANNER ────────────────────────────────────────── */
 .hero {
     position: relative;
-    min-height: 100vh;
+    /* Altura fluida: 100vh en PC y se ajusta automáticamente hasta 65vh en móviles */
+    min-height: clamp(85vh, 60vw, 100vh);
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    /* Imagen de fondo placeholder — reemplazar con la imagen real del evento */
+    /* 72.5% para enfocar a los corredores, y "top" asegura que la parte superior de la iglesia nunca se corte ni en PC ni en teléfono */
     background: 
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%231a2810"/><text x="960" y="540" text-anchor="middle" font-size="40" fill="%23277807" font-family="sans-serif" opacity="0.3">📷 IMAGEN DEL EVENTO</text></svg>')
-        center/cover no-repeat;
+        url('assets/hero.jpg')
+        72.5% top / cover no-repeat;
     background-color: #1a2810;
 }
 
@@ -1350,12 +1346,9 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     /* Hero */
-    .hero {
-        min-height: 90vh;
-    }
 
     .hero__content {
-        padding-bottom: var(--space-2xl);
+        padding-bottom: var(--space-xl);
     }
 
     .hero__meta {

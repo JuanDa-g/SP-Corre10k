@@ -5,7 +5,7 @@ const totalPasos = 4;
 
 const PRECIOS = {
     '5K':  60000,
-    '10K': 60000,
+    '10K': 70000,
 };
 
 document.addEventListener('DOMContentLoaded', () => {
