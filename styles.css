@@ -270,15 +270,16 @@ h1, h2, h3, h4, h5, h6 {
 /* ── HERO / BANNER ────────────────────────────────────────── */
 .hero {
     position: relative;
-    /* Altura fluida: 100vh en PC y se ajusta automáticamente hasta 65vh en móviles */
-    min-height: clamp(85vh, 60vw, 100vh);
+    min-height: 100vh;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    /* 72.5% para enfocar a los corredores, y "top" asegura que la parte superior de la iglesia nunca se corte ni en PC ni en teléfono */
-    background: 
-        url('assets/hero.jpg')
-        72.5% top / cover no-repeat;
+
+    background-image: url("assets/hero.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100% auto;
+
     background-color: #1a2810;
 }
 
@@ -1346,6 +1347,11 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     /* Hero */
+    .hero {
+        min-height: 85vh;
+        background-size: auto 100%;
+        background-position: right top;
+    }
 
     .hero__content {
         padding-bottom: var(--space-xl);

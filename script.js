@@ -364,9 +364,26 @@ function llenarDatosPago() {
     }
 }
 
-function confirmarPago() {
+// ============================================================
+// LLAVE PÚBLICA DE WOMPI (sandbox → producción cuando estés listo)
+// ============================================================
+const WOMPI_PUBLIC_KEY = 'pub_test_WZI2WxW8FEXeQ8rHWVZq9pyGlqpzedqy';
+
+// URL a la que Wompi redirige al usuario después de pagar.
+// Puede ser tu página principal con un parámetro para mostrar un mensaje.
+const WOMPI_REDIRECT_URL = 'https://sp-corre10k.vercel.app/?pago=completado';
+
+
+/**
+ * Maneja el click en "Confirmar y Pagar".
+ * 1. Guarda la inscripción como PENDIENTE en Sheets (vía Apps Script).
+ * 2. Apps Script devuelve la firma SHA-256 y el monto en centavos.
+ * 3. Redirige al usuario a Wompi Web Checkout.
+ */
+async function confirmarPago() {
     const btnPagar = document.getElementById('btnPagar');
-    
+
+    // Mostrar spinner
     btnPagar.disabled = true;
     btnPagar.innerHTML = `
         <svg class="spin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -376,43 +393,70 @@ function confirmarPago() {
     `;
 
     const datosInscripcion = recolectarDatosFormulario();
+    const referencia = 'INS-' + Date.now().toString(36).toUpperCase();
+    datosInscripcion.id = referencia;
+    
 
-    setTimeout(async () => {
-        const referencia = 'INS-' + Date.now().toString(36).toUpperCase();
-        
-        datosInscripcion.id = referencia;
+    try {
+        // 1. Guardar en Sheets (estado PENDIENTE) y obtener la firma de Wompi
+        const resultado = await guardarInscripcionPendiente(datosInscripcion);
 
-        await guardarInscripcion(datosInscripcion);
+        if (!resultado || resultado.status !== 'success') {
+            throw new Error(resultado?.message || 'Error al guardar la inscripción.');
+        }
 
-        mostrarModalExito(referencia);
+        // 2. Construir la URL de Wompi Web Checkout
+        const wompiParams = new URLSearchParams({
+            'public-key':          WOMPI_PUBLIC_KEY,
+            'currency':            'COP',
+            'amount-in-cents':     resultado.montoCentavos,
+            'reference':           referencia,
+            'signature:integrity': resultado.firma,
+            'redirect-url':        WOMPI_REDIRECT_URL,
+        });
 
+        const wompiURL = `https://checkout.wompi.co/p/?${wompiParams.toString()}`;
+
+        // 3. Redirigir al usuario a Wompi (misma pestaña)
+        window.location.href = wompiURL;
+
+    } catch (error) {
+        console.error('Error al iniciar el pago:', error);
+        alert('Hubo un problema al iniciar el pago. Por favor inténtalo de nuevo.');
+
+        // Restaurar botón
         btnPagar.disabled = false;
         btnPagar.innerHTML = `
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
             Confirmar y pagar
         `;
-    }, 2000);
+    }
 }
 
 
-async function guardarInscripcion(datos) {
+/**
+ * Envía los datos de la inscripción a Google Apps Script.
+ * Apps Script guarda la fila en Sheets con estado PENDIENTE y
+ * devuelve la firma de integridad SHA-256 requerida por Wompi.
+ *
+ * @param {Object} datos - Datos completos del formulario
+ * @returns {Promise<{status, referencia, firma, montoCentavos}>}
+ */
+async function guardarInscripcionPendiente(datos) {
     datos.fechaRegistro = new Date().toISOString();
 
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby8zoJR3I-mUSe05xqDi1rVg2eB_IYIsCmDSL2G5941Lk9HjpOvB5g5Mq8qBu2lZ1Ix/exec';
-    
-    try {
-        const response = await fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            body: JSON.stringify(datos),
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' }
-        });
-        
-        const resultado = await response.json();
-        console.log('Inscripción guardada en Sheets:', resultado);
-        return resultado;
-    } catch (error) {
-        console.error('Error guardando inscripción:', error);
-    }
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzjkWhSC3XDB24YTZ0VRkkNCs_Svj9-gOLvqR1jPbazy659OXiRi3bUL6jIo2DGTx_y/exec';
+
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        redirect: 'follow',
+        body: JSON.stringify({ accion: 'guardarInscripcion', ...datos }),
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    });
+
+    return await response.json();
 }
 
 
