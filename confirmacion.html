@@ -464,10 +464,7 @@
         })();
 
         function handleEntendido() {
-            // No redirige al index — simplemente cierra / no hace nada especial.
-            // Puedes redirigir a una URL externa o a otra sección si se desea en el futuro.
-            // Por ahora sólo limpia los parámetros de la URL.
-            window.history.replaceState({}, document.title, window.location.pathname);
+            window.location.href = 'index.html';
         }
     </script>
 
