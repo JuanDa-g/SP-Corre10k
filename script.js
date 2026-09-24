@@ -364,22 +364,10 @@ function llenarDatosPago() {
     }
 }
 
-// ============================================================
-// LLAVE PÚBLICA DE WOMPI (sandbox → producción cuando estés listo)
-// ============================================================
-const WOMPI_PUBLIC_KEY = 'pub_test_WZI2WxW8FEXeQ8rHWVZq9pyGlqpzedqy';
 
-// URL a la que Wompi redirige al usuario después de pagar.
-// Puede ser tu página principal con un parámetro para mostrar un mensaje.
-const WOMPI_REDIRECT_URL = 'https://sp-corre10k.vercel.app/?pago=completado';
+const WOMPI_PUBLIC_KEY = 'pub_prod_8KBLJaJA8JMKtPoNWvAJtAAlNNzzhCqV';
+const WOMPI_REDIRECT_URL = 'https://sp-corre10k.vercel.app/confirmacion.html';
 
-
-/**
- * Maneja el click en "Confirmar y Pagar".
- * 1. Guarda la inscripción como PENDIENTE en Sheets (vía Apps Script).
- * 2. Apps Script devuelve la firma SHA-256 y el monto en centavos.
- * 3. Redirige al usuario a Wompi Web Checkout.
- */
 async function confirmarPago() {
     const btnPagar = document.getElementById('btnPagar');
 

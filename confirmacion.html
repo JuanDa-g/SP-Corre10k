@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripción Exitosa · San Pedro Corre 5K·10K</title>
+    <meta name="description" content="Tu inscripción en la Carrera San Pedro Corre ha sido procesada correctamente.">
+    <link rel="icon" href="assets/logospcorre.jpg" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ── VARIABLES ──────────────────────────────────────────── */
+        :root {
+            --color-primary: #277807;
+            --color-primary-light: #34a00a;
+            --color-primary-dark: #1d5a05;
+            --color-primary-rgb: 39, 120, 7;
+            --color-accent: #FFFF00;
+            --color-accent-dark: #e6e600;
+            --color-white: #FFFFFF;
+            --bg-body: #0c1207;
+            --bg-card: #141e0d;
+            --bg-card-2: #1c2a14;
+            --border-color: #2a3d1e;
+            --border-color-rgb: 42, 61, 30;
+            --text-primary: #f0f5ec;
+            --text-secondary: #b8ccab;
+            --text-muted: #7a9468;
+            --font-display: 'Montserrat', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-2xl: 48px;
+            --space-3xl: 64px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --radius-full: 9999px;
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 40px rgba(var(--color-primary-rgb), 0.25);
+        }
+
+        /* ── RESET ──────────────────────────────────────────────── */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-body);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ── FONDO ANIMADO ──────────────────────────────────────── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 20% 20%, rgba(var(--color-primary-rgb), 0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 60% at 80% 80%, rgba(var(--color-primary-rgb), 0.08) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── PARTÍCULAS DECORATIVAS ─────────────────────────────── */
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: floatParticle linear infinite;
+        }
+
+        .particle:nth-child(1)  { width: 6px;  height: 6px;  background: var(--color-accent);   left: 10%; animation-duration: 12s; animation-delay: 0s;   top: 100%; }
+        .particle:nth-child(2)  { width: 4px;  height: 4px;  background: var(--color-primary-light); left: 25%; animation-duration: 15s; animation-delay: 2s;  top: 100%; }
+        .particle:nth-child(3)  { width: 8px;  height: 8px;  background: var(--color-accent);   left: 40%; animation-duration: 10s; animation-delay: 4s;  top: 100%; }
+        .particle:nth-child(4)  { width: 5px;  height: 5px;  background: var(--color-primary-light); left: 60%; animation-duration: 14s; animation-delay: 1s;  top: 100%; }
+        .particle:nth-child(5)  { width: 7px;  height: 7px;  background: var(--color-accent);   left: 75%; animation-duration: 11s; animation-delay: 3s;  top: 100%; }
+        .particle:nth-child(6)  { width: 4px;  height: 4px;  background: var(--color-primary-light); left: 88%; animation-duration: 13s; animation-delay: 5s;  top: 100%; }
+
+        @keyframes floatParticle {
+            0%   { transform: translateY(0) rotate(0deg);   opacity: 0; }
+            10%  { opacity: 0.15; }
+            90%  { opacity: 0.15; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* ── TARJETA PRINCIPAL ──────────────────────────────────── */
+        .confirm-card {
+            position: relative;
+            z-index: 1;
+            background: var(--bg-card);
+            border: 1px solid rgba(var(--border-color-rgb), 0.6);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl) var(--space-2xl);
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+            animation: cardEntrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+
+        @keyframes cardEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(32px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ── ICONO DE ÉXITO ─────────────────────────────────────── */
+        .success-icon {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            background: rgba(34, 197, 94, 0.10);
+            border: 2px solid rgba(34, 197, 94, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-lg);
+            color: #4ade80;
+            animation: iconPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+        }
+
+        @keyframes iconPop {
+            from { transform: scale(0); opacity: 0; }
+            to   { transform: scale(1); opacity: 1; }
+        }
+
+        .success-icon svg {
+            filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.4));
+        }
+
+        /* ── BADGE EVENTO ───────────────────────────────────────── */
+        .event-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(var(--color-primary-rgb), 0.15);
+            border: 1px solid rgba(var(--color-primary-rgb), 0.3);
+            color: var(--color-primary-light);
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-md);
+        }
+
+        /* ── TIPOGRAFÍA ─────────────────────────────────────────── */
+        .confirm-title {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+            line-height: 1.2;
+        }
+
+        .confirm-title span {
+            color: var(--color-accent);
+        }
+
+        .confirm-text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--space-lg);
+        }
+
+        /* ── DIVIDER ────────────────────────────────────────────── */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(var(--border-color-rgb), 0.8), transparent);
+            margin: var(--space-lg) 0;
+        }
+
+        /* ── REFERENCIA ─────────────────────────────────────────── */
+        .ref-block {
+            background: var(--bg-card-2);
+            border: 1px solid rgba(var(--border-color-rgb), 0.5);
+            border-radius: var(--radius-md);
+            padding: var(--space-md) var(--space-lg);
+            margin-bottom: var(--space-lg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-sm);
+        }
+
+        .ref-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .ref-value {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            letter-spacing: 0.05em;
+        }
+
+        /* ── PRÓXIMOS PASOS ─────────────────────────────────────── */
+        .next-steps {
+            text-align: left;
+            margin-bottom: var(--space-xl);
+        }
+
+        .next-steps__title {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-md);
+        }
+
+        .next-steps__list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .next-steps__item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .next-steps__bullet {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(var(--color-primary-rgb), 0.2);
+            border: 1px solid rgba(var(--color-primary-rgb), 0.4);
+            color: var(--color-primary-light);
+            font-size: 0.65rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* ── BOTÓN ──────────────────────────────────────────────── */
+        .btn-entendido {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+            color: var(--color-white);
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 250ms ease;
+            box-shadow: 0 4px 16px rgba(var(--color-primary-rgb), 0.35);
+        }
+
+        .btn-entendido:hover {
+            background: linear-gradient(135deg, var(--color-primary-light), #3aba0c);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(var(--color-primary-rgb), 0.45);
+        }
+
+        .btn-entendido:active {
+            transform: translateY(0);
+        }
+
+        /* ── LOGO / BRANDING ────────────────────────────────────── */
+        .branding {
+            position: relative;
+            z-index: 1;
+            margin-top: var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            opacity: 0.55;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: var(--font-display);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .branding img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* ── RESPONSIVE ─────────────────────────────────────────── */
+        @media (max-width: 520px) {
+            .confirm-card {
+                padding: var(--space-xl) var(--space-lg);
+            }
+
+            .confirm-title {
+                font-size: 1.45rem;
+            }
+
+            .success-icon {
+                width: 72px;
+                height: 72px;
+            }
+
+            .success-icon svg {
+                width: 36px;
+                height: 36px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Partículas decorativas -->
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Tarjeta de confirmación -->
+    <div class="confirm-card" role="main">
+
+        <!-- Badge del evento -->
+        <div class="event-badge">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+            </svg>
+            San Pedro Corre 5K · 10K
+        </div>
+
+        <!-- Icono de éxito -->
+        <div class="success-icon" aria-hidden="true">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+        </div>
+
+        <!-- Título y mensaje -->
+        <h1 class="confirm-title">¡Inscripción <span>exitosa!</span></h1>
+        <p class="confirm-text">
+            Tu registro ha sido procesado correctamente. Recibirás un correo de confirmación
+            con los detalles de tu inscripción.
+        </p>
+
+        <!-- Referencia de pago -->
+        <div class="ref-block" id="refBlock">
+            <span class="ref-label">Número de referencia</span>
+            <span class="ref-value" id="refValue">—</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Próximos pasos -->
+        <div class="next-steps">
+            <p class="next-steps__title">¿Qué sigue?</p>
+            <div class="next-steps__list">
+                <div class="next-steps__item">
+                    <div class="next-steps__bullet">1</div>
+                    <span>Revisa tu correo electrónico y confirma la recepción de tu comprobante de inscripción.</span>
+                </div>
+                <div class="next-steps__item">
+                    <div class="next-steps__bullet">2</div>
+                    <span>Recoge tu kit de corredor los días <strong>13 y 14 de Diciembre</strong> en la Biblioteca Municipal, Barrio San Martin.</span>
+                </div>
+                <div class="next-steps__item">
+                    <div class="next-steps__bullet">3</div>
+                    <span>Preséntate el <strong>19 de Diciembre de 2026</strong> con tu documento de identidad. ¡Mucho éxito!</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón -->
+        <button class="btn-entendido" onclick="handleEntendido()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6L9 17l-5-5"/>
+            </svg>
+            Entendido
+        </button>
+
+    </div>
+
+    <!-- Branding -->
+    <div class="branding" aria-hidden="true">
+        <img src="assets/logospcorre.jpg" alt="">
+        San Pedro Corre · 2026
+    </div>
+
+    <script>
+        // Leer la referencia de la URL si viene de Wompi (?id=REF o ?reference=REF)
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const ref = params.get('id') || params.get('reference') || params.get('ref') || null;
+            const refEl = document.getElementById('refValue');
+            const refBlock = document.getElementById('refBlock');
+
+            if (ref && refEl) {
+                refEl.textContent = ref.toUpperCase();
+            } else if (refBlock) {
+                // Si no hay referencia en la URL, ocultar el bloque de referencia
+                refBlock.style.display = 'none';
+            }
+        })();
+
+        function handleEntendido() {
+            // No redirige al index — simplemente cierra / no hace nada especial.
+            // Puedes redirigir a una URL externa o a otra sección si se desea en el futuro.
+            // Por ahora sólo limpia los parámetros de la URL.
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    </script>
+
+</body>
+</html>
