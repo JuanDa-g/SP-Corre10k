@@ -4,7 +4,7 @@ const totalPasos = 4;
 
 
 const PRECIOS = {
-    '5K':  60000,
+    '5K':  70000,
     '10K': 70000,
 };
 
@@ -446,23 +446,6 @@ async function guardarInscripcionPendiente(datos) {
 
     return await response.json();
 }
-
-
-/**
- * =============================================
- * INTEGRACIÓN FUTURA: INICIALIZAR PASARELA DE PAGO
- * =============================================
- * Esta función inicializará el widget/SDK de la pasarela
- * de pago elegida y lo renderizará en #pagoContainer.
- *
- * @param {string} proveedor - 'wompi' | 'payu' | 'mercadopago'
- * @param {Object} config - Configuración del pago
- */
-function inicializarPasarelaPago(proveedor, config) {
-    // TODO: Implementar según el proveedor elegido
-    console.log(`💳 [inicializarPasarelaPago] Proveedor: ${proveedor}`, config);
-}
-
 
 // ============================================================
 // FUNCIONES AUXILIARES
