@@ -100,6 +100,13 @@ function siguientePaso(pasoDesde) {
 function anteriorPaso(pasoDesde) {
     const anteriorPasoNum = pasoDesde - 1;
     if (anteriorPasoNum < 1) return;
+
+    // Si el usuario retrocede desde el paso de pago, resetear la inscripción
+    // para que no reutilice datos viejos si cambia algo
+    if (pasoDesde === 4) {
+        _resetearInscripcionPendiente();
+    }
+
     cambiarPaso(anteriorPasoNum);
 }
 
@@ -368,7 +375,15 @@ function llenarDatosPago() {
 const WOMPI_PUBLIC_KEY = 'pub_prod_8KBLJaJA8JMKtPoNWvAJtAAlNNzzhCqV';
 const WOMPI_REDIRECT_URL = 'https://sp-corre10k.vercel.app/confirmacion.html';
 
+// Guardamos el resultado del primer intento exitoso para no crear duplicados en Sheets
+let _inscripcionPendiente = null; // { resultado, wompiURL }
+let _pagandose = false;           // Bandera anti-doble-clic por si disabled no alcanza
+
 async function confirmarPago() {
+    // Evitar doble ejecución simultánea (race condition)
+    if (_pagandose) return;
+    _pagandose = true;
+
     const btnPagar = document.getElementById('btnPagar');
 
     // Mostrar spinner
@@ -380,20 +395,26 @@ async function confirmarPago() {
         Procesando...
     `;
 
-    const datosInscripcion = recolectarDatosFormulario();
-    const referencia = 'INS-' + Date.now().toString(36).toUpperCase();
-    datosInscripcion.id = referencia;
-    
-
     try {
-        // 1. Guardar en Sheets (estado PENDIENTE) y obtener la firma de Wompi
+        // Si ya obtuvimos la firma en un intento previo, NO volvemos a guardar en Sheets.
+        // Reutilizamos la URL ya construida para ir directo a Wompi.
+        if (_inscripcionPendiente) {
+            window.location.href = _inscripcionPendiente.wompiURL;
+            return;
+        }
+
+        // Primer intento: guardar en Sheets y obtener firma
+        const datosInscripcion = recolectarDatosFormulario();
+        const referencia = 'INS-' + Date.now().toString(36).toUpperCase();
+        datosInscripcion.id = referencia;
+
         const resultado = await guardarInscripcionPendiente(datosInscripcion);
 
         if (!resultado || resultado.status !== 'success') {
             throw new Error(resultado?.message || 'Error al guardar la inscripción.');
         }
 
-        // 2. Construir la URL de Wompi Web Checkout
+        // Construir la URL de Wompi Web Checkout
         const wompiParams = new URLSearchParams({
             'public-key':          WOMPI_PUBLIC_KEY,
             'currency':            'COP',
@@ -405,14 +426,18 @@ async function confirmarPago() {
 
         const wompiURL = `https://checkout.wompi.co/p/?${wompiParams.toString()}`;
 
-        // 3. Redirigir al usuario a Wompi (misma pestaña)
+        // Guardamos para no duplicar si el usuario reintenta
+        _inscripcionPendiente = { resultado, wompiURL };
+
+        // Redirigir al usuario a Wompi (misma pestaña)
         window.location.href = wompiURL;
 
     } catch (error) {
         console.error('Error al iniciar el pago:', error);
         alert('Hubo un problema al iniciar el pago. Por favor inténtalo de nuevo.');
 
-        // Restaurar botón
+        // Restaurar botón solo si no llegamos a guardar nada (para que el reintento sea seguro)
+        _pagandose = false;
         btnPagar.disabled = false;
         btnPagar.innerHTML = `
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -421,6 +446,13 @@ async function confirmarPago() {
             Confirmar y pagar
         `;
     }
+}
+
+// Limpiar el estado de inscripción pendiente al volver al paso de pago
+// (por si el usuario usa "Anterior" para cambiar datos y vuelve a intentar)
+function _resetearInscripcionPendiente() {
+    _inscripcionPendiente = null;
+    _pagandose = false;
 }
 
 
