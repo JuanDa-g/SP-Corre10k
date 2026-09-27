@@ -96,6 +96,34 @@
             </div>
 
             <div class="pruebas__grid">
+
+                <!-- Tarjeta 2K -->
+                <div class="prueba-card">
+                    <div class="prueba-card__badge">Infantil</div>
+                    <div class="prueba-card__distance">2K</div>
+                    <h3 class="prueba-card__name">Carrera Infantil</h3>
+                    <div class="prueba-card__price">
+                        <span class="prueba-card__currency">$</span>
+                        <span class="prueba-card__amount">70.000</span>
+                        <span class="prueba-card__unit">COP</span>
+                    </div>
+                    <ul class="prueba-card__features">
+                        <li>✓ Kit de corredor (camiseta + número)</li>
+                        <li>✓ Hidratación en ruta</li>
+                        <li>✓ Medalla de participación</li>
+                        <li>✓ Seguro médico</li>
+                    </ul>
+                    <p class="prueba-card__deadline">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+                        Inscripciones hasta: <strong>1 Dic 2026</strong>
+                    </p>
+                    <button class="prueba-card__btn" onclick="iniciarInscripcion('2K')">Inscribirme</button>
+                </div>
+
                 <!-- Tarjeta 5K -->
                 <div class="prueba-card">
                     <div class="prueba-card__badge">Popular</div>
@@ -307,6 +335,7 @@
                                         class="required">*</span></label>
                                 <select id="categoria" class="form-input form-select" required>
                                     <option value="">Selecciona...</option>
+                                    <option value="2K">2K — Carrera Infantil ($70.000)</option>
                                     <option value="5K">5K — Carrera Recreativa ($70.000)</option>
                                     <option value="10K">10K — Carrera Competitiva ($70.000)</option>
                                 </select>
@@ -711,6 +740,6 @@
     </div>
 
 
-    <script src="script.js?v=1.0.1"></script>
+    <script src="script.js?v=1.0.2"></script>
 </body>
 </html>

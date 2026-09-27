@@ -4,6 +4,7 @@ const totalPasos = 4;
 
 
 const PRECIOS = {
+    '2K':  70000,
     '5K':  70000,
     '10K': 70000,
 };
@@ -12,6 +13,25 @@ document.addEventListener('DOMContentLoaded', () => {
     inicializarHeader();
     inicializarMenuMovil();
     inicializarValidaciones();
+});
+
+// Manejar cuando el usuario regresa a la página usando el botón "Atrás" del navegador (BFCache)
+window.addEventListener('pageshow', (event) => {
+    // event.persisted indica si la página se cargó desde la caché del navegador
+    if (event.persisted) {
+        // Restaurar estado del botón de pago y la bandera anti-doble-clic
+        _pagandose = false;
+        const btnPagar = document.getElementById('btnPagar');
+        if (btnPagar) {
+            btnPagar.disabled = false;
+            btnPagar.innerHTML = `
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                </svg>
+                Confirmar y pagar
+            `;
+        }
+    }
 });
 
 
