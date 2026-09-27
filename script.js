@@ -4,7 +4,7 @@ const totalPasos = 4;
 
 
 const PRECIOS = {
-    '2K':  70000,
+    '2K':  50000,
     '5K':  70000,
     '10K': 70000,
 };
